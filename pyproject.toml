@@ -1,19 +1,29 @@
 [project]
 name = "docs-rag"
 version = "0.1.0"
-description = "Add your description here"
+description = "RAG para consultar documentos personales"
 readme = "README.md"
 authors = [
     { name = "Abdullah Bashir Yasmin", email = "aabdullahsmx2014@gmail.com" }
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
     "colorama>=0.4.6",
+    "pgvector>=0.5.1",
+    "psycopg[binary]>=3.3.6",
+    "python-dotenv>=1.2.4",
+    "sentence-transformers>=6.2.0",
+    "sqlmodel>=0.0.48",
 ]
 
-[project.scripts]
-docs-rag = "docs_rag:main"
+[tool.uv]
+package = false
 
-[build-system]
-requires = ["uv_build>=0.13.4,<0.14.0"]
-build-backend = "uv_build"
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]
